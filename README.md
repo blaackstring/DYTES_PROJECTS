@@ -1,8 +1,4 @@
-Below is a comprehensive README file for the FakeSnapchatGenerator project. You can copy and save it as `README.md`.
 
----
-
-```markdown
 # FakeSnapchatGenerator
 
 FakeSnapchatGenerator is a front-end–only web application designed to let users create a fully customizable chat interface that mimics Snapchat (or any chat-style layout). With FakeSnapchatGenerator, you can generate a realistic chat screenshot by customizing the conversation, participants, and visual elements—all without the need for a backend.
