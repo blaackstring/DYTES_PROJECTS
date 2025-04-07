@@ -3,10 +3,10 @@ import { Download } from "lucide-react";
 import html2canvas from "html2canvas";
 import { nanoid } from "nanoid";
 import type { Message, Participant, ChatSettings } from "../types";
-import ParticipantManager from "./ParticipantManager";
-import ChatPreview from "./ChatPreview";
-import MessageComposer from "./MessageComposer";
-import ChatSettings from "./ChatSettings";
+import ParticipantManager from "../components/ParticipantManager";
+import ChatPreview from "../components/ChatPreview";
+import MessageComposer from "../components/MessageComposer";
+import ChatSettings from "../components/ChatSettings";
 
 const defaultParticipants: Participant[] = [
   { id: "1", name: "Me", color: "#FF69B4", icon: "user" },
