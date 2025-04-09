@@ -2,18 +2,17 @@ import { useState } from "react";
 import { Download } from "lucide-react";
 import html2canvas from "html2canvas";
 import { nanoid } from "nanoid";
-import type { Message, Participant, ChatSettings } from "../types";
 import ParticipantManager from "../components/ParticipantManager";
 import ChatPreview from "../components/ChatPreview";
 import MessageComposer from "../components/MessageComposer";
 import ChatSettings from "../components/ChatSettings";
 
-const defaultParticipants: Participant[] = [
+const defaultParticipants = [
   { id: "1", name: "Me", color: "#FF69B4", icon: "user" },
   { id: "2", name: "Jack", color: "#4CAF50", icon: "user" },
 ];
 
-const defaultMessages: Message[] = [
+const defaultMessages = [
   {
     id: nanoid(),
     senderId: "2",
@@ -34,17 +33,16 @@ const defaultMessages: Message[] = [
   },
 ];
 
-const defaultSettings: ChatSettings = {
+const defaultSettings = {
   headerTitle: "👻 Snapchat",
   dayLabel: "Today",
   backgroundColor: "#ffffff",
 };
 
 export default function Home() {
-  const [participants, setParticipants] =
-    useState<Participant[]>(defaultParticipants);
-  const [messages, setMessages] = useState<Message[]>(defaultMessages);
-  const [settings, setSettings] = useState<ChatSettings>(defaultSettings);
+  const [participants, setParticipants] = useState(defaultParticipants);
+  const [messages, setMessages] = useState(defaultMessages);
+  const [settings, setSettings] = useState(defaultSettings);
 
   const handleDownload = async () => {
     const element = document.getElementById("chat-preview");

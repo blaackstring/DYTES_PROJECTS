@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { Image as ImageIcon, Send } from "lucide-react";
 import { nanoid } from "nanoid";
-import type { Message, Participant } from "../types";
 
-interface Props {
-  participants: Participant[];
-  onSend: (message: Message) => void;
-}
-
-export default function MessageComposer({ participants, onSend }: Props) {
+export default function MessageComposer({ participants, onSend }) {
   const [text, setText] = useState("");
   const [senderId, setSenderId] = useState(participants[0]?.id || "");
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState("");
 
   const handleSend = () => {
     if (!text.trim() && !image) return;
@@ -28,12 +22,12 @@ export default function MessageComposer({ participants, onSend }: Props) {
     setImage("");
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result as string);
+        setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }

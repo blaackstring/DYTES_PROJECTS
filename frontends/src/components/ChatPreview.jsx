@@ -1,17 +1,5 @@
-import type { Message, Participant, ChatSettings } from "../types";
-
-interface Props {
-  messages: Message[];
-  participants: Participant[];
-  settings: ChatSettings;
-}
-
-export default function ChatPreview({
-  messages,
-  participants,
-  settings,
-}: Props) {
-  const formatTime = (timestamp: number) => {
+export default function ChatPreview({ messages, participants, settings }) {
+  const formatTime = (timestamp) => {
     return new Intl.DateTimeFormat("en-US", {
       hour: "numeric",
       minute: "numeric",

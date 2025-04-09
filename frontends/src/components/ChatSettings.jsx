@@ -1,11 +1,6 @@
-import type { ChatSettings } from "../types";
+import React from "react";
 
-interface Props {
-  settings: ChatSettings;
-  onUpdate: (settings: ChatSettings) => void;
-}
-
-export default function ChatSettings({ settings, onUpdate }: Props) {
+export default function ChatSettings({ settings, onUpdate }) {
   return (
     <div className="space-y-4 p-4 bg-white rounded-lg shadow">
       <h2 className="text-lg font-semibold">Chat Settings</h2>

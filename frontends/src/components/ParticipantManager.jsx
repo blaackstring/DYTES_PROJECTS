@@ -1,32 +1,24 @@
-import React from 'react';
-import { Plus, Trash2, User } from 'lucide-react';
-import { nanoid } from 'nanoid';
-import type { Participant } from '../types';
+import React from "react";
+import { Plus, Trash2, User } from "lucide-react";
+import { nanoid } from "nanoid";
 
-interface Props {
-  participants: Participant[];
-  onUpdate: (participants: Participant[]) => void;
-}
-
-export default function ParticipantManager({ participants, onUpdate }: Props) {
+export default function ParticipantManager({ participants, onUpdate }) {
   const addParticipant = () => {
-    const newParticipant: Participant = {
+    const newParticipant = {
       id: nanoid(),
       name: `User ${participants.length + 1}`,
-      color: `#${Math.floor(Math.random()*16777215).toString(16)}`,
-      icon: 'user'
+      color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+      icon: "user",
     };
     onUpdate([...participants, newParticipant]);
   };
 
-  const updateParticipant = (id: string, updates: Partial<Participant>) => {
-    onUpdate(participants.map(p => 
-      p.id === id ? { ...p, ...updates } : p
-    ));
+  const updateParticipant = (id, updates) => {
+    onUpdate(participants.map((p) => (p.id === id ? { ...p, ...updates } : p)));
   };
 
-  const removeParticipant = (id: string) => {
-    onUpdate(participants.filter(p => p.id !== id));
+  const removeParticipant = (id) => {
+    onUpdate(participants.filter((p) => p.id !== id));
   };
 
   return (
@@ -41,27 +33,34 @@ export default function ParticipantManager({ participants, onUpdate }: Props) {
           Add Participant
         </button>
       </div>
-      
+
       <div className="space-y-3">
-        {participants.map(participant => (
-          <div key={participant.id} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow">
+        {participants.map((participant) => (
+          <div
+            key={participant.id}
+            className="flex items-center gap-3 p-3 bg-white rounded-lg shadow"
+          >
             <User size={24} className="text-gray-500" />
-            
+
             <input
               type="text"
               value={participant.name}
-              onChange={(e) => updateParticipant(participant.id, { name: e.target.value })}
+              onChange={(e) =>
+                updateParticipant(participant.id, { name: e.target.value })
+              }
               className="flex-1 px-2 py-1 border rounded"
               placeholder="Name"
             />
-            
+
             <input
               type="color"
               value={participant.color}
-              onChange={(e) => updateParticipant(participant.id, { color: e.target.value })}
+              onChange={(e) =>
+                updateParticipant(participant.id, { color: e.target.value })
+              }
               className="w-10 h-8 rounded cursor-pointer"
             />
-            
+
             <button
               onClick={() => removeParticipant(participant.id)}
               className="text-red-500 hover:text-red-600"
