@@ -5,12 +5,13 @@ import SS from './SS';
 import html2canvas from 'html2canvas-pro';
 import {v4 as uuid} from 'uuid';
 
-function Ui({MetaData, isheader, isfooter}) {
+function Ui({MetaData, isheader, isfooter,iswifi}) {
   const selector = useSelector((state) => state.chatsInfo);
 
   const dragItem = useRef(null);
   const dragOverItem = useRef(null);
   const divRef = useRef();
+  
 
   const [dummydata, setdummydata] = useState([
     {
@@ -129,12 +130,24 @@ function Ui({MetaData, isheader, isfooter}) {
    <div className='ssclass w-full h-full '>
      <div className=" w-full flex justify-center items-center flex-col">
     <div className=' flex flex-row justify-between w-[90%] '>
-    <div className='  w-fit border-1 border-black/40 p-2 font-bold' >Live Preview</div>
+    <div className='  border-1 border-black/40 p-2 font-bold w-30 mb-1' >Live Preview</div>
       
-      <a href="https://www.buymeacoffee.com/FAKESNAPGENERATOR" target="_blank">
-   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className="w-full h-10 border-1 rounded  " />
-  
-</a>
+      
+
+
+
+
+
+
+
+
+
+
+      <a href="https://www.buymeacoffee.com/saurabh007007" className='lg:w-[12vw] w-40 '><img
+src="https://img.buymeacoffee.com/button-api/?text=Buy me a
+coffee&emoji=&slug=saurabh007007&button_colour=FFDD00&font_colour=0000
+00&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+
     </div>
     <div
         className="bg-white w-full flex flex-col items-center sm:w-[100vw]"
@@ -156,7 +169,7 @@ function Ui({MetaData, isheader, isfooter}) {
                 <span className="font-bold text-sm ml-3 w-full">{MetaData.time ?? '10:04'}</span>
                 <div>
                   <div className="flex-1 flex flex-row items-center w-full">
-                    <div className="flex flex-row gap-[2px] items-end rounded-xl p-1">
+                  {!MetaData.airplanemode?<div className="flex flex-row gap-[2px] items-end rounded-xl p-1">
                       {[1, 2, 3, 4, 5].map((level) => (
                         <div
                           key={level}
@@ -166,8 +179,9 @@ function Ui({MetaData, isheader, isfooter}) {
                           style={{ minHeight: `${level * 2 + 2}px` }}
                         />
                       ))}
-                    </div>
-                    <span className="text-xs">5G</span>
+                    </div>:<div className='airplanemode w-[14px] ml-1 mr-1 h-[14px]'></div>}
+                    {MetaData.wifi&&<div className='wifi w-[13px] h-[14px] ml-1 mr-1'></div>}
+                    {!MetaData.wifi&&!MetaData.airplanemode&&<span className="text-xs">5G</span>}
                     {MetaData.device === 'Android' && (
                       <span className="battery w-[25px] lg:w-[2vw] lg:h-[2.5vh] h-[20px] md:w-[30px] flex justify-end"></span>
                     )}

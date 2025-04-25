@@ -8,9 +8,6 @@
 
     function Userhome() {
     const dispatch = useDispatch();
-    const selector = useSelector((state) => state.UserDetails);
-    const divRef = useRef();
-
     const [iscoloractivated, setiscoloractivated] = useState(false);
     const [i, set_i] = useState(3);
     const [isfooter, setisfooter] = useState(true);
@@ -33,7 +30,8 @@
         time: '10:04',
         height: 60,
         width: 20,
-        isbatterycharging: false,
+        wifi: false,
+        airplanemode:false,
         device: 'Android',
         towersignal: 1
     });
@@ -169,8 +167,8 @@
             </div>
 
             <div>
-            <div className="flex flex-col items-center">
-                <label className="mb-2 font-semibold text-sm">Select Tower Level (1 to 5)</label>
+            <div className="flex flex-col items-center mb-1">
+                <label className='w-full bg-black/40 rounded h-fit flex justify-around items-center mt-2 mb-1'>Select Tower Level (1 to 5)</label>
                 <input
                 type="range"
                 min="1"
@@ -178,7 +176,7 @@
                 max="5"
                 value={MetaData.towersignal}
                 onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:e.target.value}))}
-                className="w-64 accent-black"
+                className="w-94 accent-black"
                 />
             </div>
             </div>
@@ -186,7 +184,7 @@
             <div className="HW">
             <div className="flex flex-col gap-4">
   {/* Height Range */}
-  <label htmlFor="height-range">Height: {MetaData.height}</label>
+  <label htmlFor="height-range" className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>Height: {MetaData.height}</label>
   <input
     type="range"
     min={70}
@@ -204,7 +202,7 @@
   />
 
   {/* Width Range */}
-  <label htmlFor="width-range">Width: {MetaData.width}</label>
+  <label htmlFor="width-range" className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>Width: {MetaData.width}</label>
   <input
     type="range"
     min={17}
@@ -221,12 +219,13 @@
     className="w-full h-[5vh] bg-black/10 border border-black/40 rounded p-1"/>
 
   {/* Battery Charging Checkbox */}
-  <label htmlFor="battery-charging">Battery Charging:</label>
+  <div className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>
+  <label htmlFor="wifi">WIFI-ON:</label>
   <input
     type="checkbox"
-    name="isbatterycharging"
-    id="battery-charging"
-    checked={MetaData.isbatterycharging}
+    name="wifi"
+    id="wifi"
+    checked={MetaData.wifi}
     onChange={(e) =>
       setMetaData((prev) => ({
         ...prev,
@@ -234,6 +233,21 @@
       }))
     }
   />
+
+<label htmlFor="airplanemode">AeroPlane-Mode:</label>
+  <input
+    type="checkbox"
+    name="airplanemode"
+    id="airplanemode"
+    checked={MetaData.airplanemode}
+    onChange={(e) =>
+      setMetaData((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.checked,
+      }))
+    }
+  />
+  </div>
 
 
 
