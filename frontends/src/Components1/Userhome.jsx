@@ -31,6 +31,7 @@
         height: 60,
         width: 20,
         wifi: false,
+              story:false,
         airplanemode:false,
         device: 'Android',
         towersignal: 1
@@ -127,16 +128,18 @@
         <div className="parts flex flex-col ">
 
         <span>Parts:</span>
-        <div>
-        <input type='checkbox' id='hed' onClick={()=>setisheader(!isheader)} />
-        <label htmlFor="hed">:Hide Header</label>
+        <div className='w-full bg-black/20 rounded h-fit flex justify-around items-center mt-2 mb-1'>
+        <label htmlFor="hed">Hide Header:</label>
+        <input type='checkbox' id='hed' className='ml-2' onClick={()=>setisheader(!isheader)} />
+      
                         
 
         </div>
-        <div>
-        <input type='checkbox' id='fot' onClick={()=>setisfooter(!isfooter)}/>
+        <div className='w-full bg-black/20 rounded h-fit flex justify-around items-center mt-2 mb-1'>
+        <label htmlFor="fot">Hide Footer:</label>
+        <input type='checkbox' id='fot' className='ml-2' onClick={()=>setisfooter(!isfooter)}/>
 
-        <label htmlFor="fot">:Hide Footer</label>
+   
 
 
         </div>
@@ -145,15 +148,16 @@
         <div className="interface flex flex-col justify-between ml-5 ">
 
         <span>Interface:</span>
-        <div>
-        <input type='radio' id='hed' onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:'Android'}))}  name='device' defaultChecked={true}/>
-        <label htmlFor="hed">:Android</label>
+        <div className=' flex-row w-full bg-black/20 rounded h-fit flex justify-around items-center mt-2 mb-1'>
+        <label htmlFor="hed ml-1">Android:</label>   
+        <input type='radio' id='hed' className='ml-2' onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:'Android'}))}  name='device' defaultChecked={true}/>
 
         </div>
-        <div>
-        <input type='radio' id='fot' onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:'Iphone'}))}  name='device'/>
+        <div className='flex flex-row justify-center items-center w-full bg-black/20 rounded h-fit mt-2 mb-1'>
+        <label htmlFor="fot">Iphone:</label>
+        <input type='radio' id='fot'  className='ml-2' onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:'Iphone'}))}  name='device'/>
 
-        <label htmlFor="fot">:Iphone</label>
+        
         </div>
 
         </div>
@@ -168,7 +172,7 @@
 
             <div>
             <div className="flex flex-col items-center mb-1">
-                <label className='w-full bg-black/40 rounded h-fit flex justify-around items-center mt-2 mb-1'>Select Tower Level (1 to 5)</label>
+                <label className='w-full bg-black/20 rounded h-fit flex justify-around items-center mt-2 mb-1'>Select Tower Level (1 to 5)</label>
                 <input
                 type="range"
                 min="1"
@@ -176,7 +180,7 @@
                 max="5"
                 value={MetaData.towersignal}
                 onChange={(e)=>setMetaData((prev)=>({...prev,[e.target.name]:e.target.value}))}
-                className="w-94 accent-black"
+                className="w-74 accent-black"
                 />
             </div>
             </div>
@@ -184,7 +188,7 @@
             <div className="HW">
             <div className="flex flex-col gap-4">
   {/* Height Range */}
-  <label htmlFor="height-range" className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>Height: {MetaData.height}</label>
+  <label htmlFor="height-range" className='w-full bg-black/20 rounded h-fit flex justify-around items-center'>Height: {MetaData.height}</label>
   <input
     type="range"
     min={70}
@@ -198,11 +202,11 @@
         [e.target.name]: Number(e.target.value),
       }))
     }
-    className="w-full h-[5vh] bg-black/10 border border-black/40 rounded p-1"
+    className="w-full h-[5vh] bg-black/10 border border-black/20 rounded p-1"
   />
 
   {/* Width Range */}
-  <label htmlFor="width-range" className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>Width: {MetaData.width}</label>
+  <label htmlFor="width-range" className='w-full bg-black/20 rounded h-fit flex justify-around items-center'>Width: {MetaData.width}</label>
   <input
     type="range"
     min={17}
@@ -216,10 +220,10 @@
         [e.target.name]: Number(e.target.value),
       }))
     }
-    className="w-full h-[5vh] bg-black/10 border border-black/40 rounded p-1"/>
+    className="w-full h-[5vh] bg-black/10 border border-black/20 rounded p-1"/>
 
   {/* Battery Charging Checkbox */}
-  <div className='w-full bg-black/40 rounded h-fit flex justify-around items-center'>
+  <div className='w-full bg-black/20 rounded h-fit flex justify-around items-center'>
   <label htmlFor="wifi">WIFI-ON:</label>
   <input
     type="checkbox"
@@ -240,6 +244,27 @@
     name="airplanemode"
     id="airplanemode"
     checked={MetaData.airplanemode}
+    onChange={(e) =>
+      setMetaData((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.checked,
+      }))
+    }
+  />
+  </div>
+
+
+
+
+
+  <div className='w-full bg-black/20 rounded h-fit flex justify-around items-center'>
+
+<label htmlFor="story">Story-Activate:</label>
+  <input
+    type="checkbox"
+    name="story"
+    id="story"
+    checked={MetaData.story}
     onChange={(e) =>
       setMetaData((prev) => ({
         ...prev,

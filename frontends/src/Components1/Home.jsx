@@ -60,6 +60,7 @@
       <div className='home w-screen h-screen overflow-x-hidden'>
       <div className=' w-full sm:h-10 lg:h-15  mt-2 p-2 mb-2 flex flex-row   items-center'>
         <div className='header w-14 h-16 absolute ' ref={container} onClick={onClickGood}></div>
+        <img src='https://media.tenor.com/Hy1g-wmN76EAAAAi/click-here-down-there.gif' alt="" className='w-25  absolute  left-[-10px] top-[-10px]' />
         <div className='fake ml-2 font-bold  lg:text-[3vw] text-2xl  p-1  text-[#E5C600] ' ref={container2}>FAKE SNAP GENERATOR</div>
       </div>
         <Userhome/>
