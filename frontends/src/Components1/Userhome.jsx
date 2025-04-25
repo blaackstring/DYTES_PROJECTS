@@ -5,6 +5,7 @@
     import { chatsInfo } from '../store/chats';
     import Ui from './Ui';
 
+
     function Userhome() {
     const dispatch = useDispatch();
     const selector = useSelector((state) => state.UserDetails);
@@ -15,6 +16,8 @@
     const [isfooter, setisfooter] = useState(true);
     const [isheader, setisheader] = useState(true);
     const [isFeature, setisFeature] = useState(false);
+   
+
 
     const [ChatData, setChatData] = useState({
         message: '',
@@ -107,6 +110,8 @@
         setColor(p.color);
     };
 
+
+
     return (
         <div className='w-[100vw] h- flex justify-center items-center flex-col'>
     
@@ -127,6 +132,7 @@
         <div>
         <input type='checkbox' id='hed' onClick={()=>setisheader(!isheader)} />
         <label htmlFor="hed">:Hide Header</label>
+                        
 
         </div>
         <div>
@@ -177,7 +183,7 @@
             </div>
             </div>
             </div>
-            <div6 className="HW">
+            <div className="HW">
             <div className="flex flex-col gap-4">
   {/* Height Range */}
   <label htmlFor="height-range">Height: {MetaData.height}</label>
@@ -212,8 +218,7 @@
         [e.target.name]: Number(e.target.value),
       }))
     }
-    className="w-full h-[5vh] bg-black/10 border border-black/40 rounded p-1"
-  />
+    className="w-full h-[5vh] bg-black/10 border border-black/40 rounded p-1"/>
 
   {/* Battery Charging Checkbox */}
   <label htmlFor="battery-charging">Battery Charging:</label>
@@ -229,12 +234,15 @@
       }))
     }
   />
+
+
+
 </div>
 
                 <div>
                     
                 </div>
-            </div6>
+            </div>
 
         </div>):''}
         </div>
@@ -258,6 +266,7 @@
 
                                 <div className='w-[90%] h-full flex-1 flex flex-col justify-between items-center border-1 rounded border-black/40 p-2'>
                                     <span className='font-bold' >Choose Color</span>
+                                    
                                     <div className='bg-white flex  w-[98%] justify-center items-center border-2 p-2 border-black/40 mt-2 font-bold rounded '>
 
                                         <div style={{ backgroundColor: color }} className="w-[86%] h-[1.7vh] mt-1 border-1   " onClick={() => setiscoloractivated(!iscoloractivated)}></div>

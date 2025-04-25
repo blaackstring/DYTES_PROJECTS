@@ -145,8 +145,7 @@ function Ui({MetaData, isheader, isfooter}) {
           minWidth: '310px', // good for most mobile screens
           maxWidth: '100vw', // ensure it doesn't overflow
         }}
-        ref={divRef}
-      >
+        ref={divRef}>
 
         
         <div className="w-full h-full flex flex-col">

@@ -3,13 +3,13 @@
   background-image: url('../assets/pattern.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 .leftarrow{
     background-image: url('../assets/leftarrow.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain\;
 }
 .userimage{
     background-image: url('../assets/Userimg.png');
